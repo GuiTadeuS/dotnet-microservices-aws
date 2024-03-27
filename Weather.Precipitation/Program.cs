@@ -23,4 +23,11 @@ app.MapGet("/observation/{ddd}", async (string ddd, [FromQuery] int? days, Preci
     
 });
 
+app.MapPost("/observation", async ([FromBody]Precipitation precip, PrecipDbContext context) =>
+{
+    precip.CreatedOn = precip.CreatedOn.ToUniversalTime();
+    await context.AddAsync(precip);
+    await context.SaveChangesAsync();
+});
+
 app.Run();
