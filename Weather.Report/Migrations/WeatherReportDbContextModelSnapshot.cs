@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Weather.Precipitation.DataAccess;
+using Weather.Report.DataAccess;
 
 #nullable disable
 
-namespace Weather.Precipitation.Migrations
+namespace Weather.Report.Migrations
 {
-    [DbContext(typeof(PrecipDbContext))]
-    partial class PrecipDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(WeatherReportDbContext))]
+    partial class WeatherReportDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -22,11 +22,17 @@ namespace Weather.Precipitation.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Weather.Precipitation.DataAccess.Precipitation", b =>
+            modelBuilder.Entity("Weather.Report.DataAccess.WeatherReport", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<decimal>("AverageLowC")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("AvergeHighC")
+                        .HasColumnType("numeric");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
@@ -34,15 +40,12 @@ namespace Weather.Precipitation.Migrations
                     b.Property<string>("Ddd")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("Millimeters")
+                    b.Property<decimal>("RainfallTotalMillimeters")
                         .HasColumnType("numeric");
-
-                    b.Property<string>("WeatherType")
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("precipitation", (string)null);
+                    b.ToTable("weather_report", (string)null);
                 });
 #pragma warning restore 612, 618
         }

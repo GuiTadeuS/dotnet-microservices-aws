@@ -2,18 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Weather.Precipitation.DataAccess;
+using Weather.Temperature.DataAccess;
 
 #nullable disable
 
-namespace Weather.Precipitation.Migrations
+namespace Weather.Temperature.Migrations
 {
-    [DbContext(typeof(PrecipDbContext))]
-    partial class PrecipDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TemperatureDbContext))]
+    [Migration("20240327182315_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace Weather.Precipitation.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Weather.Precipitation.DataAccess.Precipitation", b =>
+            modelBuilder.Entity("Weather.Temperature.DataAccess.Temperature", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,15 +37,15 @@ namespace Weather.Precipitation.Migrations
                     b.Property<string>("Ddd")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("Millimeters")
+                    b.Property<decimal>("TempHighC")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("WeatherType")
-                        .HasColumnType("text");
+                    b.Property<decimal>("TempLowC")
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
-                    b.ToTable("precipitation", (string)null);
+                    b.ToTable("temperature", (string)null);
                 });
 #pragma warning restore 612, 618
         }

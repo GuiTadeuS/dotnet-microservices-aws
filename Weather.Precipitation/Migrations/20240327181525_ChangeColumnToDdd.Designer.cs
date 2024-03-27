@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Weather.Precipitation.DataAccess;
@@ -11,9 +12,11 @@ using Weather.Precipitation.DataAccess;
 namespace Weather.Precipitation.Migrations
 {
     [DbContext(typeof(PrecipDbContext))]
-    partial class PrecipDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327181525_ChangeColumnToDdd")]
+    partial class ChangeColumnToDdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

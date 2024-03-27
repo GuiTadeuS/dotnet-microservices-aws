@@ -9,14 +9,14 @@ builder.Services.AddServices(builder.Configuration);
 
 var app = builder.Build();
 
-app.MapGet("/observation/{cep}", async (string cep, [FromQuery] int? days, PrecipDbContext context) =>
+app.MapGet("/observation/{ddd}", async (string ddd, [FromQuery] int? days, PrecipDbContext context) =>
 {
     if (days == null || days < 1 || days > 30) return Results
                                                 .BadRequest("No days provided or days not between 1 and 30");
 
     var startDate = DateTime.UtcNow - TimeSpan.FromDays(days.Value);
     var results = await context.Precipitations
-                    .Where(p => p.Cep == cep && p.CreatedOn >= startDate )
+                    .Where(p => p.Ddd == ddd && p.CreatedOn >= startDate )
                     .ToListAsync();
 
     return Results.Ok(results);

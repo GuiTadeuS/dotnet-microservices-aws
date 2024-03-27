@@ -6,6 +6,6 @@
         public DateTime CreatedOn { get; set; }
         public decimal Millimeters { get; set; }
         public string? WeatherType { get; set; }
-        public string? Cep { get; set; }
+        public string? Ddd { get; set; }
     }
 }
