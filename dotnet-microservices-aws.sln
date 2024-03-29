@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Precipitation", "We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.DataLoader", "Weather.DataLoader\Weather.DataLoader.csproj", "{15E16535-E518-4583-A443-7CB702684729}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aws", "aws", "{B9C62229-6331-4906-AEDB-1C3CE373A28E}"
+	ProjectSection(SolutionItems) = preProject
+		credentials.example = credentials.example
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +41,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27F21014-8FB4-4844-8FB9-373EF31FDA0D}
 	EndGlobalSection
 EndGlobal
