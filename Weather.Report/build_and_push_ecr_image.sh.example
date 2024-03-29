@@ -1,4 +1,4 @@
-aws ecr get-login-password --region sa-east-1 --profile weather-ecr-agent | docker login --username AWS --password-stdin 123456789012.dkr.ecr.sa-east-1.amazonaws.com
+aws ecr get-login-password --region sa-east-1 --profile ecr-enginner | docker login --username AWS --password-stdin 123456789012.dkr.ecr.sa-east-1.amazonaws.com
 docker buid -f ./Dockerfile -t weather-report:latest .
 docker tag weather-report:latest 123456789012.dkr.ecr.sa-east-1.amazonaws.com/weather-report:latest
 docker push 123456789012.dkr.ecr.sa-east-1.amazonaws.com/weather-report:latest
