@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Weather.Temperature/build_and_push_ecr_image.sh
+Weather.DataLoader/build_and_push_ecr_image.sh
+Weather.Precipitation/build_and_push_ecr_image.sh
+Weather.Report/build_and_push_ecr_image.sh
