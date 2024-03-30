@@ -9,5 +9,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
 WORKDIR /app
 COPY --from=build-env /app ./
 
-EXPOSE 5000
+EXPOSE 8080
+
 ENTRYPOINT ["dotnet", "Weather.Temperature.dll"]
